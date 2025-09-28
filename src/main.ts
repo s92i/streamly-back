@@ -1,7 +1,6 @@
 import { ValidationPipe } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
-import { RedisStore } from 'connect-redis'
 import * as cookieParser from 'cookie-parser'
 import * as session from 'express-session'
 
@@ -9,6 +8,8 @@ import { CoreModule } from './core/core.module'
 import { RedisService } from './core/redis/redis.service'
 import { ms, type StringValue } from './shared/utils/ms.util'
 import { parseBoolean } from './shared/utils/parse-boolean.util'
+
+const connectRedis = require('connect-redis')
 
 async function bootstrap() {
 	const app = await NestFactory.create(CoreModule)
@@ -23,6 +24,8 @@ async function bootstrap() {
 			transform: true
 		})
 	)
+
+	const RedisStore = connectRedis(session)
 
 	app.use(
 		session({
@@ -56,4 +59,5 @@ async function bootstrap() {
 
 	await app.listen(config.getOrThrow<number>('APP_PORT'))
 }
+
 bootstrap()
