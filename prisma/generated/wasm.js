@@ -131,7 +131,8 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 exports.TokenType = exports.$Enums.TokenType = {
-  EMAIL_VERIFY: 'EMAIL_VERIFY'
+  EMAIL_VERIFY: 'EMAIL_VERIFY',
+  PASSWORD_RESET: 'PASSWORD_RESET'
 };
 
 exports.Prisma.ModelName = {
@@ -185,8 +186,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"POSTGRES_URI\")\n}\n\nmodel User {\n  id String @id @default(uuid())\n\n  email    String @unique\n  password String\n\n  username    String @unique\n  displayName String @map(\"display_name\")\n\n  avatar String?\n  bio    String?\n\n  isVerified Boolean @default(false) @map(\"is_verified\")\n\n  isEmailVerified Boolean @default(false) @map(\"is_email_verified\")\n\n  tokens Token[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"users\")\n}\n\nmodel Token {\n  id String @id @default(uuid())\n\n  token     String    @unique\n  type      TokenType\n  expiresIn DateTime  @map(\"expires_in\")\n\n  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  userId String? @map(\"user_id\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"tokens\")\n}\n\nenum TokenType {\n  EMAIL_VERIFY\n\n  @@map(\"token_types\")\n}\n",
-  "inlineSchemaHash": "2fbde66b032afa4ecdce58d19a8571b1a74f5abeb89714360edfc4403313e3fc",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"POSTGRES_URI\")\n}\n\nmodel User {\n  id String @id @default(uuid())\n\n  email    String @unique\n  password String\n\n  username    String @unique\n  displayName String @map(\"display_name\")\n\n  avatar String?\n  bio    String?\n\n  isVerified Boolean @default(false) @map(\"is_verified\")\n\n  isEmailVerified Boolean @default(false) @map(\"is_email_verified\")\n\n  tokens Token[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"users\")\n}\n\nmodel Token {\n  id String @id @default(uuid())\n\n  token     String    @unique\n  type      TokenType\n  expiresIn DateTime  @map(\"expires_in\")\n\n  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  userId String? @map(\"user_id\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"tokens\")\n}\n\nenum TokenType {\n  EMAIL_VERIFY\n  PASSWORD_RESET\n\n  @@map(\"token_types\")\n}\n",
+  "inlineSchemaHash": "8f333d39d1e74f2029d9bf2c99340bc6c716860a46ad2b753e0ec45dc068f31a",
   "copyEngine": true
 }
 config.dirname = '/'
