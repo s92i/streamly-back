@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import type { SessionMetadata } from '@/src/shared/types/session-metadata.types'
 
+import { DeactivateTemplate } from './templates/deactivate.template'
 import { PasswordRecoveryTemplate } from './templates/password-recovery.template'
 import { VerificationTemplate } from './templates/verification.template'
 
@@ -30,6 +31,16 @@ export class MailService {
 		)
 
 		return this.sendMail(email, 'Password reset', html)
+	}
+
+	public async sendDeactivationToken(
+		email: string,
+		token: string,
+		metadata: SessionMetadata
+	) {
+		const html = await render(DeactivateTemplate({ token, metadata }))
+
+		return this.sendMail(email, 'Account deactivation', html)
 	}
 
 	private async sendMail(to: string, subject: string, html: string) {
