@@ -6,6 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import { verify } from 'argon2'
 import { Request } from 'express'
+import { TOTP } from 'otpauth'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 import { RedisService } from '@/src/core/redis/redis.service'
@@ -72,21 +73,13 @@ export class SessionService {
 	}
 
 	public async login(req: Request, input: LoginInput, userAgent: string) {
-		const { login, password } = input
+		const { login, password, pin } = input
 
 		const user = await this.prismaService.user.findFirst({
 			where: {
 				OR: [
-					{
-						username: {
-							equals: login
-						}
-					},
-					{
-						email: {
-							equals: login
-						}
-					}
+					{ username: { equals: login } },
+					{ email: { equals: login } }
 				]
 			}
 		})
@@ -103,15 +96,41 @@ export class SessionService {
 
 		if (!user.isEmailVerified) {
 			await this.verificationService.sendVerificationToken(user)
-
 			throw new BadRequestException(
 				'Account not verified. Please check your email for confirmation'
 			)
 		}
 
+		if (user.isTotpEnabled) {
+			if (!pin) {
+				return {
+					message: 'A code is required to complete authorization',
+					user: null
+				}
+			}
+
+			const totp = new TOTP({
+				issuer: 'Streamly',
+				label: `${user.email}`,
+				algorithm: 'SHA1',
+				digits: 6,
+				secret: user.totpSecret
+			})
+
+			const delta = totp.validate({ token: pin })
+			if (delta === null) {
+				throw new BadRequestException('Invalid code')
+			}
+		}
+
 		const metadata = getSessionMetadata(req, userAgent)
 
-		return saveSession(req, user, metadata)
+		await saveSession(req, user, metadata)
+
+		return {
+			user,
+			message: 'Login successful'
+		}
 	}
 
 	public async logout(req: Request) {
