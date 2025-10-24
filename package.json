@@ -51,6 +51,7 @@
 		"hi-base32": "^0.5.1",
 		"i18n-iso-countries": "^7.14.0",
 		"ioredis": "^5.8.0",
+		"livekit-server-sdk": "1.2.7",
 		"multiformats": "^13.4.1",
 		"otpauth": "^9.4.1",
 		"prisma": "^6.16.2",
