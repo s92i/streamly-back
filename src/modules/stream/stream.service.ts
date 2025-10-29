@@ -38,7 +38,8 @@ export class StreamService {
 				...whereClause
 			},
 			include: {
-				user: true
+				user: true,
+				category: true
 			},
 			orderBy: {
 				createdAt: 'desc'
@@ -70,7 +71,7 @@ export class StreamService {
 				this.prismaService.stream.findFirst({
 					skip: index,
 					where: { user: { isDeactivated: false } },
-					include: { user: true }
+					include: { user: true, category: true }
 				})
 			)
 		)
@@ -86,7 +87,12 @@ export class StreamService {
 				userId: user.id
 			},
 			data: {
-				title
+				title,
+				category: {
+					connect: {
+						id: categoryId
+					}
+				}
 			}
 		})
 
