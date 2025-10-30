@@ -7,9 +7,14 @@ import {
 import type { User } from '@/prisma/generated'
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 
+import { NotificationsService } from '../notifications/notifications.service'
+
 @Injectable()
 export class FollowService {
-	public constructor(private readonly prismaService: PrismaService) {}
+	public constructor(
+		private readonly prismaService: PrismaService,
+		private readonly notificationService: NotificationsService
+	) {}
 
 	public async findMyFollowers(user: User) {
 		return this.prismaService.follow.findMany({
@@ -61,12 +66,27 @@ export class FollowService {
 			)
 		}
 
-		await this.prismaService.follow.create({
+		const follow = await this.prismaService.follow.create({
 			data: {
 				followerId: user.id,
 				followingId: channel.id
+			},
+			include: {
+				follower: true,
+				following: {
+					include: {
+						notificationsSettings: true
+					}
+				}
 			}
 		})
+
+		if (follow.following.notificationsSettings.siteNotifications) {
+			await this.notificationService.createNewFollowing(
+				follow.following.id,
+				follow.follower
+			)
+		}
 
 		return true
 	}
