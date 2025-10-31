@@ -55,20 +55,20 @@ export class UserModel implements User {
 	@Field(() => [SocialLinkModel])
 	public socialLinks: SocialLinkModel[]
 
-	@Field(() => [FollowModel])
-	public followers: FollowModel[]
-
-	@Field(() => [FollowModel])
-	public followings: FollowModel[]
-
 	@Field(() => StreamModel)
 	public stream: StreamModel
 
 	@Field(() => [NotificationModel])
 	public notifications: NotificationModel[]
 
-	@Field(() => [NotificationsSettingsModel])
-	public notificationSettings: NotificationsSettingsModel[]
+	@Field(() => NotificationsSettingsModel)
+	public notificationSettings: NotificationsSettingsModel
+
+	@Field(() => [FollowModel])
+	public followers: FollowModel[]
+
+	@Field(() => [FollowModel])
+	public followings: FollowModel[]
 
 	@Field(() => Date)
 	public createdAt: Date

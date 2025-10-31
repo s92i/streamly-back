@@ -12429,6 +12429,7 @@ export namespace Prisma {
     id?: string
     email?: string
     username?: string
+    telegramId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -12436,7 +12437,6 @@ export namespace Prisma {
     displayName?: StringFilter<"User"> | string
     avatar?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
-    telegramId?: StringNullableFilter<"User"> | string | null
     isVerified?: BoolFilter<"User"> | boolean
     isEmailVerified?: BoolFilter<"User"> | boolean
     isTotpEnabled?: BoolFilter<"User"> | boolean
@@ -12453,7 +12453,7 @@ export namespace Prisma {
     notificationsSettings?: XOR<NotificationsSettingsNullableScalarRelationFilter, NotificationsSettingsWhereInput> | null
     followers?: FollowListRelationFilter
     followings?: FollowListRelationFilter
-  }, "id" | "email" | "username">
+  }, "id" | "email" | "username" | "telegramId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder

@@ -20,7 +20,7 @@ model User {
   avatar String?
   bio    String?
 
-  telegramId String? @default("telegram_id")
+  telegramId String? @unique @map("telegram_id")
 
   isVerified Boolean @default(false) @map("is_verified")
 
@@ -139,6 +139,8 @@ model Follow {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@unique([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
   @@map("follows")
 }
 

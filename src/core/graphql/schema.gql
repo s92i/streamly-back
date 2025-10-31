@@ -308,7 +308,7 @@ type UserModel {
   isEmailVerified: Boolean!
   isTotpEnabled: Boolean!
   isVerified: Boolean!
-  notificationSettings: [NotificationsSettingsModel!]!
+  notificationSettings: NotificationsSettingsModel!
   notifications: [NotificationModel!]!
   password: String!
   socialLinks: [SocialLinkModel!]!
