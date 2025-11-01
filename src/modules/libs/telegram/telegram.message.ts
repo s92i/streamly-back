@@ -71,5 +71,13 @@ export const MESSAGES = {
 		`You have received a new sponsorship for the plan <b>${plan.title}</b>\n` +
 		`💰 Amount: <b>${plan.price}$</b>\n` +
 		`🙋‍♂️ Sponsor: <a href='https://streamly.com/${sponsor.username}'>${sponsor.displayName}</a>\n` +
-		`📅 Date of issue: <b>${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</b>`
+		`📅 Date of issue: <b>${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</b>`,
+	enableTwoFactor:
+		`🔐 Ensure your security!\n\n` +
+		`Enable two-factor authentication in your <a href="https://streamly.com/dashboard/settings">account settings</a>`,
+	verifyChannel:
+		`<b>🎉 Congratulations! Your channel has been verified</b>\n\n` +
+		`We are pleased to inform you that your channel is now verified, and you have received an official badge.\n\n` +
+		`The verification badge confirms the authenticity of your channel and increases viewer trust.\n\n` +
+		`Thank you for being with us and continuing to grow your channel with Streamly!`
 }
