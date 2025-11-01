@@ -7308,7 +7308,7 @@ qs@6.13.0:
   dependencies:
     side-channel "^1.0.6"
 
-qs@^6.11.2, qs@^6.14.0:
+qs@^6.11.0, qs@^6.11.2, qs@^6.14.0:
   version "6.14.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.14.0.tgz#c63fa40680d2c5c941412a0e899c89af60c0a930"
   integrity sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==
@@ -7944,6 +7944,13 @@ strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+
+stripe@^19.2.0:
+  version "19.2.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-19.2.0.tgz#6c31d93008ee7f80a66754f2a0e30e5491defcfb"
+  integrity sha512-strzN8luMGMC1LEleGKg7pJGXFx0kSS4y/uSjK8yPQV9SUBMtJVAp/v8XMQLRnMbXaSaWLrIaHcMlKcsizdRDQ==
+  dependencies:
+    qs "^6.11.0"
 
 strnum@^2.1.0:
   version "2.1.1"

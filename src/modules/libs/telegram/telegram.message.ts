@@ -1,4 +1,4 @@
-import type { User } from '@/prisma/generated'
+import type { SponsorshipPlan, User } from '@/prisma/generated'
 import type { SessionMetadata } from '@/src/shared/types/session-metadata.types'
 
 export const MESSAGES = {
@@ -65,5 +65,11 @@ export const MESSAGES = {
 	newFollowing: (follower: User, followersCount: number) =>
 		`👤 You have a new follower\n\n` +
 		`This user <a href="https://streamly.com/${follower.username}">${follower.displayName}</a>\n\n` +
-		`Total number of followers on your channel: ${followersCount}`
+		`Total number of followers on your channel: ${followersCount}`,
+	newSponsorship: (plan: SponsorshipPlan, sponsor: User) =>
+		`<b>🎉 New sponsorship!</b>\n\n` +
+		`You have received a new sponsorship for the plan <b>${plan.title}</b>\n` +
+		`💰 Amount: <b>${plan.price}$</b>\n` +
+		`🙋‍♂️ Sponsor: <a href='https://streamly.com/${sponsor.username}'>${sponsor.displayName}</a>\n` +
+		`📅 Date of issue: <b>${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</b>`
 }
