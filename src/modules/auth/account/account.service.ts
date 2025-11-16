@@ -79,6 +79,20 @@ export class AccountService {
 	public async changeEmail(user: User, input: ChangeEmailInput) {
 		const { email } = input
 
+		if (email === user.email) {
+			throw new ConflictException('This is already your email')
+		}
+
+		const doesEmailExist = await this.prismaService.user.findUnique({
+			where: {
+				email
+			}
+		})
+
+		if (doesEmailExist) {
+			throw new ConflictException('This email is already taken')
+		}
+
 		await this.prismaService.user.update({
 			where: {
 				id: user.id
