@@ -25,7 +25,7 @@ export function EnableTwoFactorTemplate({domain}: EnableTwoFactorTemplateProps) 
                 <Section className='bg-white rounded-lg shadow-md p-6 text-center mb-6'>
                     <Heading className='text-2xl text-black font-semibold'>Why is this important ?</Heading>
                     <Text className='text-black'>Two-factor authentication adds an extra layer of protection by requiring a code known only to you</Text>
-                    <Link href={settingsLink} className='infline-flex justify-center items-center rounded-md text-sm font-medium text-white bg-[#18B9AE] px-5 py-2 rounded-full'>Go to account settings</Link>
+                    <Link href={settingsLink} className='infline-flex justify-center items-center text-sm font-medium text-white bg-[#18B9AE] px-5 py-2 rounded-full'>Go to account settings</Link>
                 </Section>
 
                 <Section className='text-center mt-8'>

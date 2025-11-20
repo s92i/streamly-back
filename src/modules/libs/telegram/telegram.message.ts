@@ -34,8 +34,8 @@ export const MESSAGES = {
 		`<b>⚠ Account Deactivation Request</b>\n\n` +
 		`You have initiated the process of deactivating your account on <b>Streamly</b>.\n\n` +
 		`To complete the operation, please confirm your request by entering the following confirmation code:\n\n` +
-		`🔑 <b>Confirmation Code:</b> ${token}` +
-		`📅 <b>Request Date:</b> ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}` +
+		`🔑 <b>Confirmation Code:</b> ${token}\n` +
+		`📅 <b>Request Date:</b> ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}\n\n` +
 		`ℹ️ <b>Request Information:</b>\n\n` +
 		`📍 <b>Location:</b> ${metadata.location.country}, ${metadata.location.city}\n` +
 		`💻 <b>Operating System:</b> ${metadata.device.os}\n` +

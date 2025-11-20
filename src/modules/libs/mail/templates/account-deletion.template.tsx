@@ -25,7 +25,7 @@ export function AccountDeletionTemplate({domain}: AccountDeletionTemplateProps) 
                 <Section className='bg-white text-black text-center rounded-lg shadow-md p-6 mb-4'>
                     <Text>You will no longer receive notifications by email.</Text>
                     <Text>If you wish to return to the platform, you can register using the following link:</Text>
-                    <Link href={registerLink} className='inline-flex justify-center items-center rounded-md mt-2 text-sm font-medium text-white bg-[#18B9AE] px-5 py-2 rounded-full'>Register on Streamly</Link>
+                    <Link href={registerLink} className='inline-flex justify-center items-center mt-2 text-sm font-medium text-white bg-[#18B9AE] px-5 py-2 rounded-full'>Register on Streamly</Link>
                 </Section>
 
                 <Section className='text-center text-black'>
