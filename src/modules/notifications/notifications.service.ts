@@ -163,8 +163,8 @@ export class NotificationsService {
 			})
 
 		if (
-			notificationsSettings.telegramNotifications &&
-			!notificationsSettings.user.telegramId
+			notificationsSettings?.telegramNotifications &&
+			!notificationsSettings?.user?.telegramId
 		) {
 			const telegramAuthToken = await generateToken(
 				this.prismaService,
@@ -179,8 +179,8 @@ export class NotificationsService {
 		}
 
 		if (
-			!notificationsSettings.telegramNotifications &&
-			notificationsSettings.user.telegramId
+			!notificationsSettings?.telegramNotifications &&
+			notificationsSettings?.user?.telegramId
 		) {
 			await this.prismaService.user.update({
 				where: {
