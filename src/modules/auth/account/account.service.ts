@@ -26,7 +26,12 @@ export class AccountService {
 			where: { id },
 			include: {
 				socialLinks: true,
-				notificationsSettings: true
+				stream: true,
+				notificationsSettings: {
+					include: {
+						user: true
+					}
+				}
 			}
 		})
 
@@ -37,6 +42,9 @@ export class AccountService {
 						userId: id,
 						siteNotifications: true,
 						telegramNotifications: false
+					},
+					include: {
+						user: true
 					}
 				})
 

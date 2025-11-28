@@ -373,7 +373,7 @@ type UserModel {
   notifications: [NotificationModel!]!
   password: String!
   socialLinks: [SocialLinkModel!]!
-  stream: StreamModel!
+  stream: StreamModel
   telegramId: String
   totpSecret: String
   updatedAt: DateTime!

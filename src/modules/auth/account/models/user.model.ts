@@ -55,8 +55,8 @@ export class UserModel implements User {
 	@Field(() => [SocialLinkModel])
 	public socialLinks: SocialLinkModel[]
 
-	@Field(() => StreamModel)
-	public stream: StreamModel
+	@Field(() => StreamModel, { nullable: true })
+	public stream?: StreamModel
 
 	@Field(() => [NotificationModel])
 	public notifications: NotificationModel[]
