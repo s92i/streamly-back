@@ -62,7 +62,7 @@ export class UserModel implements User {
 	public notifications: NotificationModel[]
 
 	@Field(() => NotificationsSettingsModel, { nullable: true })
-	public notificationSettings?: NotificationsSettingsModel
+	public notificationsSettings?: NotificationsSettingsModel
 
 	@Field(() => [FollowModel])
 	public followers: FollowModel[]
