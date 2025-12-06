@@ -44,7 +44,7 @@ export class StreamModel implements Stream {
 	@Field(() => String)
 	public userId: string
 
-	@Field(() => CategoryModel)
+	@Field(() => CategoryModel, { nullable: true })
 	public category: CategoryModel
 
 	@Field(() => String)
