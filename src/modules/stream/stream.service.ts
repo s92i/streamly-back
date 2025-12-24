@@ -107,46 +107,27 @@ export class StreamService {
 		}
 
 		const chunks: Buffer[] = []
-
 		for await (const chunk of file.createReadStream()) {
 			chunks.push(chunk)
 		}
-
 		const buffer = Buffer.concat(chunks)
 
-		const filename = `/streams/${user.username}.webp`
+		const filename = `streams/${user.username}.webp`
 
-		if (file.filename && file.filename.endsWith('.gif')) {
-			const processedBuffer = await sharp(buffer, { animated: true })
-				.resize(1280, 720)
-				.webp()
-				.toBuffer()
+		const processedBuffer = await sharp(buffer, { animated: true })
+			.resize(1280, 720)
+			.webp()
+			.toBuffer()
 
-			await this.storageService.upload(
-				processedBuffer,
-				filename,
-				'image/webp'
-			)
-		} else {
-			const processedBuffer = await sharp(buffer, { animated: true })
-				.resize(1280, 720)
-				.webp()
-				.toBuffer()
-
-			await this.storageService.upload(
-				processedBuffer,
-				filename,
-				'image/webp'
-			)
-		}
+		await this.storageService.upload(
+			processedBuffer,
+			filename,
+			'image/webp'
+		)
 
 		await this.prismaService.stream.update({
-			where: {
-				userId: user.id
-			},
-			data: {
-				thumbnailUrl: filename
-			}
+			where: { userId: user.id },
+			data: { thumbnailUrl: filename }
 		})
 
 		return true
