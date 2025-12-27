@@ -7,7 +7,7 @@ import {
 import type { User } from '@/prisma/generated'
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 
-import { StripeService } from '../../libs/stripe/Stripe.service'
+import { StripeService } from '../../libs/stripe/stripe.service'
 
 import { CreatePlanInput } from './inputs/create-plan.input'
 

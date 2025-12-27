@@ -6,7 +6,7 @@ import { TransactionStatus } from '@/prisma/generated'
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 
 import { LivekitService } from '../libs/livekit/livekit.service'
-import { StripeService } from '../libs/stripe/Stripe.service'
+import { StripeService } from '../libs/stripe/stripe.service'
 import { TelegramService } from '../libs/telegram/telegram.service'
 import { NotificationsService } from '../notifications/notifications.service'
 

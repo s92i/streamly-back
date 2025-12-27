@@ -8,7 +8,7 @@ import { ConfigService } from '@nestjs/config'
 import type { User } from '@/prisma/generated'
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 
-import { StripeService } from '../../libs/stripe/Stripe.service'
+import { StripeService } from '../../libs/stripe/stripe.service'
 
 @Injectable()
 export class TransactionService {
