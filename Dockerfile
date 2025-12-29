@@ -1,6 +1,4 @@
-FROM node:20.17.0-alpine AS base
-
-RUN apk add --no-cache libc6-compat
+FROM node:20.17.0-slim AS base
 
 WORKDIR /app
 
