@@ -26,4 +26,6 @@ RUN yarn install --production --frozen-lockfile --include-optional
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/prisma/generated ./prisma/generated
 
+EXPOSE 4000
+
 CMD ["node", "dist/main"]
