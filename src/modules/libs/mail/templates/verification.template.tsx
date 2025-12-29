@@ -26,7 +26,7 @@ export function VerificationTemplate({domain, token}: VerificationTemplateProps)
                     <Section className='text-center mt-8'>
                         <Text className='text-gray-600'>
                         If you have any questions or encounter difficulties, feel free to contact our support service at {' '}
-                        <Link href="mailto:support@streamly.com" className='text-[#18B9AE] underline'>support@streamly.com</Link>
+                        <Link href="mailto:contact@streamly-live.click" className='text-[#18B9AE] underline'>contact@streamly-live.click</Link>
                         </Text>
                     </Section>
                 </Body>
